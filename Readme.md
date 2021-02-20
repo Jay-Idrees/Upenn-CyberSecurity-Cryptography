@@ -110,7 +110,7 @@ Plaintext: Information in human-readable form.
 
 ## Encryption Strength and Mechanics
 
-- "How much more secure is _x_ more bits of encryption?" As we increase the number 
+- "How much more secure is _x_ more bits of encryption?"
 
 - One bit is only either 1 or 0 
 
@@ -136,3 +136,68 @@ Plaintext: Information in human-readable form.
 - Symmetric key algorithms use a single, shared key to encrypt and decrypt a message.
 
 - The shared key is also referred to as a **private key**. 
+
+- **Data encryption standard (DES)**
+
+- FBI initially developed 56k bit key, but it was not very robust
+
+- **Advanced Encryption Standard (AES)**
+
+- Rijndael cipher was the strongest in the FBI contest of encryption and was named AES
+
+- AES offers multiple encryption strengths: 128-bits, 192-bits, and 256-bits. 
+
+- The AES algorithm cannot be used without advanced technologies
+
+
+## Steps of the Encryption process using OpenSSL
+
+1. Step 1: Generating the private key and IV - This step basically dictats the features to be included in the encryption method
+
+- `openssl` is a free encryption software that can be installed
+
+`openssl enc -pbkdf2 -nosalt -aes-256-cbc -k mypassword -P > key_and_IV`
+     
+  
+- `openssl` initializes the OpenSSL program.
+- `enc` stands for _encryption_.
+- `-pbkdf2` specifies the encryption key type. 
+- `-nosalt` specifies that salting will not be applied. Salting adds a random value
+- `-aes-256-cbc` is the name of the cipher used. 
+- `-k mypassword` creates a key, with the password `mypassword`.
+- `-P > key_and_IV` prints out the key and IV to a file called `key_and_IV`.
+
+  - For example:
+
+  ```
+    key=89E01536AC207279409D4DE1E5253E01F4A1769E696DB0D6062CA9B8F56767C8
+    iv =EE99333010B23C01E6364E035E97275C
+  ```
+- **key space or private key** It is a range of characters that can be used for a specific algorithm- It is used for encryption and decryption
+- **Initialization Vector** It is an additional value that adds randomness to the value
+
+2. Step 2: Using the generated key space and IV on an existing file to create a new encrypted file
+
+  `openssl enc -pbkdf2 -nosalt -aes-256-cbc -in plainmessage.txt -out plainmessage.txt.enc -base64 -K 89E01536AC207279409D4DE1E5253E01F4A1769E696DB0D6062CA9B8F56767C8 -iv EE99333010B23C01E6364E035E97275C`
+   
+        
+    - `openssl` initializes the OpenSSL program.
+    - `enc` stands for _encryption_.
+    - `-pbkdf2` specifies the encryption key type. 
+    - `-nosalt` specifies that salting will not be applied.
+    - `-aes-256-cbc` the type of cipher used.
+    - `-in plainmessage.txt` is the input file that we will be encrypting.
+    - `-out plainmessage.txt.enc` is the output file that is encrypted.
+    - `-base64` specifies completing the encryption in a text format.
+    - `-K 89E01536AC207279409D4DE1E5253E01F4A1769E696DB0D6062CA9B8F56767C8` specifies the key and the key value.
+    - `-iv EE99333010B23C01E6364E035E97275C` specifies the IV and the IV value.
+
+3. Step 3: Decrypting the file
+
+`openssl enc -pbkdf2 -nosalt -aes-256-cbc -in plainmessage.txt.enc -d -base64 -K 89E01536AC207279409D4DE1E5253E01F4A1769E696DB0D6062CA9B8F56767C8 -iv EE99333010B23C01E6364E035E97275C`
+   
+- The syntax is the same as the encryption, except for two small changes:
+  
+    - `-d` specifies decryption.
+
+    - `-in plainmessage.txt.enc` specifies that the input message is now the encrypted 
