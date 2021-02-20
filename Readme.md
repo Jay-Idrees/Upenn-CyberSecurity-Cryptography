@@ -68,10 +68,10 @@ Plaintext: Information in human-readable form.
    
    - For example: The octal value **042** represents the decimal **34**.
    
-   - Quick analysis. If its just numbers then it is probably just ASCII, if its a combination of numbers and letters then it is probably Hex and if only numbers 0-7 then probably octal
-
-
-    ## Modes of data protection 
+   - Quick analysis. If its just numbers then it is probably just ASCII, if its a combination of numbers and letters then it is probably Hex and if only numbers 0-7 then probably octal.
+   
+   
+   ## Modes of data protection 
 
     - **DATA at rest** - hardrive database- encryption of the laptop or hard drive
     - **Data in Motion** - Data moving between devices- e-g encrypted email  - use encryption
