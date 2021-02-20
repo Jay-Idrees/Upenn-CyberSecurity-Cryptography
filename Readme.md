@@ -8,6 +8,7 @@
   - [Binary to Text Converter](https://www.browserling.com/tools/binary-to-text)
   - [Browserling Hex-to-Text converter](https://www.browserling.com/tools/hex-to-text)
   - [Browserling Binary-to-Text converter](https://www.browserling.com/tools/binary-to-text)
+  - [American Cryptogram Association's list of cipher types](https://www.cryptogram.org/resource-area/cipher-types/)
   
 
 
@@ -71,7 +72,7 @@ Plaintext: Information in human-readable form.
     - Quick analysis. If its just numbers then it is probably just ASCII, if its a combination of numbers and letters then it is probably Hex and if only numbers 0-7 then probably octal
 
 
-    # Modes of data protection 
+    ## Modes of data protection 
 
     - **DATA at rest** - hardrive database- encryption of the laptop or hard drive
     - **Data in Motion** - Data moving between devices- e-g encrypted email  - use encryption
@@ -86,5 +87,12 @@ Plaintext: Information in human-readable form.
     - **Integrity**
     - This is separate from encryption and authentication. It checks that despit the data being encrypted and the source authenticated, the data has also not been altered during transport
     
-    - **Repudication**
+    - **Non-Repudication**
     - The owner of the email cannot refuse that it was not him 
+
+    ## Methods of encryption
+
+    - Mostly based on mathematical algorithms and algorithims use keys to maintain their security
+
+    ## Symetric key algorithms
+    Advance encryption standard
