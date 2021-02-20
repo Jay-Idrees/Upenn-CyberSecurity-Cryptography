@@ -9,6 +9,7 @@
   - [Browserling Hex-to-Text converter](https://www.browserling.com/tools/hex-to-text)
   - [Browserling Binary-to-Text converter](https://www.browserling.com/tools/binary-to-text)
   - [American Cryptogram Association's list of cipher types](https://www.cryptogram.org/resource-area/cipher-types/)
+  - [American Cryptogram Association's list of cipher types](https://www.cryptogram.org/resource-area/cipher-types/)
   
 
 
@@ -57,7 +58,7 @@ Plaintext: Information in human-readable form.
 
    - `0-127` is standard ASCII and `127-255` is extended ASCII
 
-     - The decimal value **84** represents the character **T**.
+    - The decimal value **84** represents the character **T**.
 
     - The decimal value **118** represents the character **v**.
 
@@ -93,6 +94,38 @@ Plaintext: Information in human-readable form.
     ## Methods of encryption
 
     - Mostly based on mathematical algorithms and algorithims use keys to maintain their security
+
+    - **Strategies**:
+    
+    1. **Stream or ubstitution Ciphers**: Each letter is replaced with another  to create ciphertext e-g cesar and enigma ciphers
+
+    2. **Transposition** The sequence of the the text is re-arranged. E-g
+    - First, break **Hello!** into two blocks: **Hel**  and  **lo!**
+    - Next, use the transposition rule to rearrange the letters. 
+    - **Hel** to **lHe**
+    - **lo!** to **!lo**
+    - Lastly, combine the rearranged text to create the ciphertext: **lHe!lo**
+
+    3. **Block**: The algorithms are applied to chunks or blocks of characters
+
+    4.**Combination** Most modern cryptography utilizes a comnination of these strategies
+
+    ## Encryption Strength and Mechanics
+
+    - "How much more secure is _x_ more bits of encryption?" As we increase the number 
+
+    - One bit is only either 1 or 0 
+
+    - For each bit that is added to the key, the key space **doubles** in size. Thus if we increase the total length (or **bit size**) or pw/encryption text to 2 or 3 then the possibilities are increased and it will take longer time. This total number of possibilities is called **key space**
+
+     - Two to the power of the bit size, or  2 ^ [bit size].
+
+    - Depends on the length of the text, type of characters and the possible values. For example if the password is only 1 character and can only be composed numbers 0-9 then the key space is 10. If we make it complex then it will become time consuming 
+
+    - This is what is meant by 64bit or 256bit encryption
+
+    - **Security Tradeoff** The more complex the computation, the more time consuming- holy grail finding an algorythm with the balacne between quality of encryption and the time taken
+
 
     ## Symetric key algorithms
     Advance encryption standard
