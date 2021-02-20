@@ -167,6 +167,8 @@ Plaintext: Information in human-readable form.
 - `-k mypassword` creates a key, with the password `mypassword`.
 - `-P > key_and_IV` prints out the key and IV to a file called `key_and_IV`.
 
+- Very important: Note that the key here is generated based on the length of the supplied password. If I give the password to another person then they can use the same process to generate the key with the password provided and then then use the key and IV to decrypt. The process is consistent. 
+
   - For example:
 
   ```
@@ -180,17 +182,17 @@ Plaintext: Information in human-readable form.
 
   `openssl enc -pbkdf2 -nosalt -aes-256-cbc -in plainmessage.txt -out plainmessage.txt.enc -base64 -K 89E01536AC207279409D4DE1E5253E01F4A1769E696DB0D6062CA9B8F56767C8 -iv EE99333010B23C01E6364E035E97275C`
    
-        
-    - `openssl` initializes the OpenSSL program.
-    - `enc` stands for _encryption_.
-    - `-pbkdf2` specifies the encryption key type. 
-    - `-nosalt` specifies that salting will not be applied.
-    - `-aes-256-cbc` the type of cipher used.
-    - `-in plainmessage.txt` is the input file that we will be encrypting.
-    - `-out plainmessage.txt.enc` is the output file that is encrypted.
-    - `-base64` specifies completing the encryption in a text format.
-    - `-K 89E01536AC207279409D4DE1E5253E01F4A1769E696DB0D6062CA9B8F56767C8` specifies the key and the key value.
-    - `-iv EE99333010B23C01E6364E035E97275C` specifies the IV and the IV value.
+    
+- `openssl` initializes the OpenSSL program.
+- `enc` stands for _encryption_.
+- `-pbkdf2` specifies the encryption key type. 
+- `-nosalt` specifies that salting will not be applied.
+- `-aes-256-cbc` the type of cipher used.
+- `-in plainmessage.txt` is the input file that we will be encrypting.
+- `-out plainmessage.txt.enc` is the output file that is encrypted.
+- `-base64` specifies completing the encryption in a text format.
+- `-K 89E01536AC207279409D4DE1E5253E01F4A1769E696DB0D6062CA9B8F56767C8` specifies the key and the key value.
+- `-iv EE99333010B23C01E6364E035E97275C` specifies the IV and the IV value.
 
 3. Step 3: Decrypting the file
 
