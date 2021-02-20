@@ -24,8 +24,6 @@
 
 - Engma machine was created by the Germans to make encryption more sophisticated
 
-- 
-
 - Some common terms:
 
 Plaintext: Information in human-readable form.
@@ -57,20 +55,20 @@ Plaintext: Information in human-readable form.
    - Another good example of encoding is `ASCII- American Standard Code for Information Interchange` encoding. Using the hexadecimals to convert the binary to text and vise versa. There is encoding for every upper and lower case english letters, punctuation, graphic and mathematical symbols as a number between 0 to 255
 
    - `0-127` is standard ASCII and `127-255` is extended ASCII
-
-    - The decimal value **84** represents the character **T**.
-
-    - The decimal value **118** represents the character **v**.
-
-    - This conversion is called **decimal to ASCII encoding** or **decimal to text encoding**.  
-
-    - The hex representation of the word "hello" is **68 65 6c 6c 6f**. Designed for more compact representtion of the binary data
-
-    - Alternatively for **octal** as a system that applies a principle similar to hex, but uses digits `0` to `7`. 
-
-    - For example: The octal value **042** represents the decimal **34**.
-
-    - Quick analysis. If its just numbers then it is probably just ASCII, if its a combination of numbers and letters then it is probably Hex and if only numbers 0-7 then probably octal
+   
+   - The decimal value **84** represents the character **T**.
+   
+   - The decimal value **118** represents the character **v**.
+   
+   - This conversion is called **decimal to ASCII encoding** or **decimal to text encoding**.  
+   
+   - The hex representation of the word "hello" is **68 65 6c 6c 6f**. Designed for more compact representtion of the binary data
+   
+   - Alternatively for **octal** as a system that applies a principle similar to hex, but uses digits `0` to `7`. 
+   
+   - For example: The octal value **042** represents the decimal **34**.
+   
+   - Quick analysis. If its just numbers then it is probably just ASCII, if its a combination of numbers and letters then it is probably Hex and if only numbers 0-7 then probably octal
 
 
     ## Modes of data protection 
