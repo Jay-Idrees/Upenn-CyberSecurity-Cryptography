@@ -114,6 +114,12 @@ Plaintext: Information in human-readable form.
 
     - One bit is only either 1 or 0 
 
+    - Each algorithm has a specific **key space**: a range of numbers that can be used for that specific algorithm
+
+    - A key space is a total possible permutations of a key
+
+    - Why don't we just have one million-bit key to ensure it's never cracked?
+
     - For each bit that is added to the key, the key space **doubles** in size. Thus if we increase the total length (or **bit size**) or pw/encryption text to 2 or 3 then the possibilities are increased and it will take longer time. This total number of possibilities is called **key space**
 
      - Two to the power of the bit size, or  2 ^ [bit size].
@@ -126,4 +132,7 @@ Plaintext: Information in human-readable form.
 
 
     ## Symetric key algorithms
-    Advance encryption standard
+ 
+  - Symmetric key algorithms use a single, shared key to encrypt and decrypt a message.
+  
+  - The shared key is also referred to as a **private key**. 
