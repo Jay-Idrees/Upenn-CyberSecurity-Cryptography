@@ -11,6 +11,7 @@
   - [American Cryptogram Association's list of cipher types](https://www.cryptogram.org/resource-area/cipher-types/)
   - [American Cryptogram Association's list of cipher types](https://www.cryptogram.org/resource-area/cipher-types/)
   - [RSA (cryptosystem) (Wikipedia)](https://en.wikipedia.org/wiki/RSA_(cryptosystem))
+  - [GlobalSign: SSL vs TLS - What's the Difference?](https://www.globalsign.com/en/blog/ssl-vs-tls-difference/)
   - [The GNU Privacy Handbook entry on making and verifying signatures](https://www.gnupg.org/gph/en/manual/x135.html)
        - [Diffie–Hellman Key Exchange (Wikipedia)](https://en.wikipedia.org/wiki/Diffie%E2%80%93Hellman_key_exchange)
      - [Secret Key Exchange (Diffie-Hellman) Video
@@ -248,7 +249,44 @@ Hiding data inside the image files. You typically need a cover file and file or 
 - `-sf family.jpg` uses `sf`, which stands for _stegofile_, to specify which file to run the steganography tool against.
   
 
-## Using SSL certificate
+## Using SSL certificates
+
+- Uses public key cryptography for secure exchange of data from a browser to the webserserver hosting the website
+
+- SSL certificates use HTTPS protocol
+
+- Certificate issuing authorities for the companies
+- Globalsign
+- DigiCert
+- Comodo
+- Symantec
+
+- **Process**
+
+1. The company requests an SSL certificate **X.509 certificate** for securing online communications.
+
+2. Company documents are submitted to the **certification authority** company by a designated official. Also supplying a unique ip address(domain name)
+
+3. This step is called **Certificate signing request (CSR)** which consists of generating a public and private encryption key. Only the public key is sent to the certificate authority. CSR also contains information about the company
+
+4. After verification of the documents, the company is issued a certificate which is then installed on the webserver by the company
+
+5. No one has the private encryption key. Its hidden and installed on the webserver.
+
+6. You can look at the trusted companies for issuing the certificates which the common browsers recognize- e-g- in chrome you can select security and privacy, manage certificates and then look at the Trusted Root Certification Authorities to see a list of all the approved certification authorities. 
+
+7. **Chain of Trust** These are the top certificate issuing companies (called **root certificate authorities**) that further approve another set of **certification authority** companies that intern issue the SSL certificatee. This can be looked at by clicking view on the certificates window and then selecting certification pathway to reveal the chain of trust. The purpose of this chain of trust is ensure that in the case the issing company is hacked, only the certificates that were issures by that comapnay were compromised. 
+
+8. Note that the public and the private key system is separate from the session key. Below are the setps that occur when you viit a secure website
+
+    a. Browser asks webserver for certificate 
+    b. Server responds with certificate
+    c. Browser verifies the certificate expiration date and root CA (the top most on the chain of trust)
+    d. Public key is next used by the browser to create a new session key which is then sent to the server. 
+    e. The session key establishes a secure session between the browser and the webserver
+    f. This is now an encryptd session- only after this is extablished between the browser and server, will any data exchange can occur between the server and the computer that is vising the website
+    g. The encryption and decryption of the session data exchange is the symetric encryption. Prior steps are asymetric in the HTTPS protocol
+
 
 ## Crack a password with cryptography
 
