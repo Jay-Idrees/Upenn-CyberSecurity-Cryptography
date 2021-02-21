@@ -10,6 +10,11 @@
   - [Browserling Binary-to-Text converter](https://www.browserling.com/tools/binary-to-text)
   - [American Cryptogram Association's list of cipher types](https://www.cryptogram.org/resource-area/cipher-types/)
   - [American Cryptogram Association's list of cipher types](https://www.cryptogram.org/resource-area/cipher-types/)
+  - [RSA (cryptosystem) (Wikipedia)](https://en.wikipedia.org/wiki/RSA_(cryptosystem))
+  - [The GNU Privacy Handbook entry on making and verifying signatures](https://www.gnupg.org/gph/en/manual/x135.html)
+       - [Diffie–Hellman Key Exchange (Wikipedia)](https://en.wikipedia.org/wiki/Diffie%E2%80%93Hellman_key_exchange)
+     - [Secret Key Exchange (Diffie-Hellman) Video
+ (YouTube)](https://www.youtube.com/watch?v=NmM9HA2MQGI)
   
 
 
@@ -76,7 +81,7 @@ Plaintext: Information in human-readable form.
 - **DATA at rest** - hardrive database- encryption of the laptop or hard drive
 - **Data in Motion** - Data moving between devices- e-g encrypted email  - use encryption
 
-## Goals of Encryption
+## Goals of Encryption - This is called the P.A.I.N Model
 
 - **Privacy and Confidentiality** thats why you are encrypting the message
 
@@ -95,7 +100,7 @@ Plaintext: Information in human-readable form.
 
 - **Strategies**:
 
-1. **Stream or ubstitution Ciphers**: Each letter is replaced with another  to create ciphertext e-g cesar and enigma ciphers
+1. **Stream or ubstitution Ciphers**: Each letter is replaced with another one at a time to create ciphertext e-g cesar and enigma ciphers
 
 2. **Transposition** The sequence of the the text is re-arranged. E-g
 - First, break **Hello!** into two blocks: **Hel**  and  **lo!**
@@ -131,7 +136,7 @@ Plaintext: Information in human-readable form.
 - **Security Tradeoff** The more complex the computation, the more time consuming- holy grail finding an algorythm with the balacne between quality of encryption and the time taken
 
 
-## Symetric key algorithms
+## Symetric key algorithms (the alternative is Asymetric Key Algorithms)
 
 - Symmetric key algorithms use a single, shared key to encrypt and decrypt a message.
 
@@ -203,3 +208,53 @@ Plaintext: Information in human-readable form.
     - `-d` specifies decryption.
 
     - `-in plainmessage.txt.enc` specifies that the input message is now the encrypted 
+
+## Asymetric or Public-Key Encryption 
+
+- **RSA**
+- **GPG**
+
+## Checking for Data Integrity- (whether the data is altered or not) with Hashing
+
+- **Message Digest**
+- **MD5**, **SHA256**, **one-way** algorithms
+- Creating hashtags `md5sum`, `sha256sum`
+
+## Digital Signatures
+
+## Steganography
+
+Hiding data inside the image files. You typically need a cover file and file or text file that needs data. The hidden file can then be extracted
+
+- **Insertion**
+
+- `steghide embed -cf family.jpg -ef hidden_message.txt`
+    
+
+- `steghide` is the command to run `steghide`.
+
+- `embed` is the additional command to specify that we are hiding the message.
+
+- `-cf family.jpg` uses `-cf`, which stands for _cover file_, to specify the file that the data is being hidden in. In this example, we are using the file `family.jpg`.
+
+- `-ef hidden_message.txt` uses `-ef`, which stands for _embed file_, to specify the file that is being hidden. In this example, we are hiding `hidden_message.txt`.
+
+ - **Extraction**
+
+- `steghide extract -sf family.jpg`
+
+- `extract` is the additional command to indicate we are extracting the message.
+
+- `-sf family.jpg` uses `sf`, which stands for _stegofile_, to specify which file to run the steganography tool against.
+  
+
+## Using SSL certificate
+
+## Crack a password with cryptography
+
+## Hard disk data encryption
+
+## Email and Web Security
+**S/MIME** and **PGP**
+- Uses public key and the signature 
+- 
