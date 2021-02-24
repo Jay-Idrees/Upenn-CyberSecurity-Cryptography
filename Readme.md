@@ -351,8 +351,25 @@ Hiding data inside the image files. You typically need a cover file and file or 
 
 ## Other cryptogenic attack methods
 
+1.  A **statistical attack** exploits weaknesses associated with statistics in a cryptographic algorithm.
+- **Mitigation** Use random values so the data is not predictable
 
+2. **Brute Force Attack**
+- **Mitigation** Limiting login attempts , firewalls to stop repeated attacks 
 
+3. **Birthday Attack** Exploiting the fact that a same hash/cypertext may code for different passwords/text by chance by the algorithm- Also known as hashing collision
+- **Mitigation** Use stonger algorithm for hashing
+
+4. **Frequency Analysis** - Using the common letters e,t,o,a - The hacker can use the frequently occuring letter in the hash to determine the substitution key
+- **Mitigation** Use stronger algorithm for encryption
+
+5. Replay Attack - The attacker can replay the encrypted signal to open the security door
+- **Mitigation** - Use an expiration date and time associated with the signal 
+
+6. **Chosen Plaintext** - The hacker has the encryption program and the hash, but not plaintext and can try several plain text to determine the encryption
+- **Mitigation**- Use advance algorithm
+
+7. **Known plaintext** - The hacker has hash and the plaintext 
 
 ## Hard disk data encryption
 
