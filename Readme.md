@@ -137,6 +137,32 @@ Plaintext: Information in human-readable form.
 
 - **Security Tradeoff** The more complex the computation, the more time consuming- holy grail finding an algorythm with the balacne between quality of encryption and the time taken
 
+## Asymetric or Public-Key Encryption 
+
+- **RSA**
+- **GPG**
+
+## Checking for Data Integrity- (whether the data is altered or not) with Hashing
+
+- **Message Digest**
+- **MD5**, **SHA256**, **one-way** algorithms
+- Creating hashtags `md5sum`, `sha256sum`
+
+## Digital Signatures
+
+
+## Applications of Cryptography
+
+- **Windows/hardisk** Bitlocker  Symetric encryption that uses `AES` algorithm
+
+- **E-mail**  We can use public key encryption, HTTPS (HTTP over SSL (Secure Soket layer)), digital signature
+- For example the sender can use public key of the reciepient, and the reciever can decrypt with private key, similarly a digital signature can be added for authenticity and integrity
+-` S/MIME` and `PGP` are the programs that can achieve these goals
+- HTTPS uses public key cryptography to establish a secure session between the browser and the server by confirming certificates before allowing traffic
+
+- **Hashing of the Passwords** during log in 
+
+- **Digital Forensics** The forenic expert immediately performs hashing of the laptop as proof that the data was not changed after the the device was discovered. In addition Steganography can be used to discover hidden data in image files
 
 ## Symetric key algorithms (the alternative is Asymetric Key Algorithms)
 
@@ -159,7 +185,7 @@ Plaintext: Information in human-readable form.
 
 ## Steps of the Encryption process using OpenSSL
 
-1. Step 1: Generating the private key and IV - This step basically dictats the features to be included in the encryption method
+1. Step 1: Generating the private key and IV (adds randomness to encryption algorithm) - This step basically dictats the features to be included in the encryption method
 
 - `openssl` is a free encryption software that can be installed
 
@@ -211,20 +237,9 @@ Plaintext: Information in human-readable form.
 
     - `-in plainmessage.txt.enc` specifies that the input message is now the encrypted 
 
-## Asymetric or Public-Key Encryption 
 
-- **RSA**
-- **GPG**
 
-## Checking for Data Integrity- (whether the data is altered or not) with Hashing
-
-- **Message Digest**
-- **MD5**, **SHA256**, **one-way** algorithms
-- Creating hashtags `md5sum`, `sha256sum`
-
-## Digital Signatures
-
-## Steganography
+## Steganography /Steghide
 
 Hiding data inside the image files. You typically need a cover file and file or text file that needs data. The hidden file can then be extracted
 
@@ -298,7 +313,7 @@ Hiding data inside the image files. You typically need a cover file and file or 
 
  - Cryptographic attack types include statistical, birthday, brute force, frequency, replay, known-plaintext, and chosen-plaintext attacks.
 
- - **Hashtag- Command program for cracking a Hash**
+ - **Hashtag- Command program for cracking a Hash** most advance using rainbow tables
 
  It uses:
  - `Rainbow tables`  These are tables that display the corresponding cyphertext for a given plain text
@@ -334,8 +349,7 @@ Hiding data inside the image files. You typically need a cover file and file or 
  - `--force`: Overrides any small errors that may occur.
 
 
-
-
+## Other cryptogenic attack methods
 
 
 
