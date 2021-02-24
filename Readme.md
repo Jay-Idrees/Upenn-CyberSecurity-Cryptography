@@ -13,6 +13,7 @@
   - [RSA (cryptosystem) (Wikipedia)](https://en.wikipedia.org/wiki/RSA_(cryptosystem))
   - [GlobalSign: SSL vs TLS - What's the Difference?](https://www.globalsign.com/en/blog/ssl-vs-tls-difference/)
   - [The GNU Privacy Handbook entry on making and verifying signatures](https://www.gnupg.org/gph/en/manual/x135.html)
+  - [Birthday problem (Wikipedia)](https://en.wikipedia.org/wiki/Birthday_problem).
        - [Diffie–Hellman Key Exchange (Wikipedia)](https://en.wikipedia.org/wiki/Diffie%E2%80%93Hellman_key_exchange)
      - [Secret Key Exchange (Diffie-Hellman) Video
  (YouTube)](https://www.youtube.com/watch?v=NmM9HA2MQGI)
@@ -279,16 +280,41 @@ Hiding data inside the image files. You typically need a cover file and file or 
 
 8. Note that the public and the private key system is separate from the session key. Below are the setps that occur when you viit a secure website
 
-    a. Browser asks webserver for certificate 
-    b. Server responds with certificate
-    c. Browser verifies the certificate expiration date and root CA (the top most on the chain of trust)
-    d. Public key is next used by the browser to create a new session key which is then sent to the server. 
-    e. The session key establishes a secure session between the browser and the webserver
-    f. This is now an encryptd session- only after this is extablished between the browser and server, will any data exchange can occur between the server and the computer that is vising the website
-    g. The encryption and decryption of the session data exchange is the symetric encryption. Prior steps are asymetric in the HTTPS protocol
+    a. Browser asks webserver for certificate <br>
+    b. Server responds with certificate <br>
+    c. Browser verifies the certificate expiration date and root CA (the top most on the chain of trust) <br>
+    d. Public key is next used by the browser to create a new session key which is then sent to the server. <br>
+    e. The session key establishes a secure session between the browser and the webserver<br>
+    f. This is now an encryptd session- only after this is extablished between the browser and server, will any data exchange can occur between the server and the computer that is vising the website<br>
+    g. The encryption and decryption of the session data exchange is the symetric encryption. Prior steps are asymetric in the HTTPS protocol<br>
+
+9. Even if a certificate has been issued, a website can be considered invalid if the certificate is:
+     - Expired.
+     - Assigned to the wrong host.
+     - Issued by a CA that is not in the browser's root store.
 
 
 ## Crack a password with cryptography
+
+ - Cryptographic attack types include statistical, birthday, brute force, frequency, replay, known-plaintext, and chosen-plaintext attacks.
+
+ - **Hashtag- Command program for cracking a Hash**
+
+ It uses:
+ - `Rainbow tables`  These are tables that display the corresponding cyphertext for a given plain text
+ - `dictionary wordlists` These are commonly used passwords
+ - `broot force attacks` like `John the Rippper`
+
+ - Steps:
+ 
+
+
+- Hackers can use this to determine the password of the root user after they obtained access into the network
+
+
+
+
+
 
 ## Hard disk data encryption
 
@@ -296,3 +322,7 @@ Hiding data inside the image files. You typically need a cover file and file or 
 **S/MIME** and **PGP**
 - Uses public key and the signature 
 - 
+
+
+
+## Mitigation Strategies after cryptogenic attacks
