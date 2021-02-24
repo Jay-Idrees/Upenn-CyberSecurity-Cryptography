@@ -10,7 +10,7 @@
   - [Browserling Binary-to-Text converter](https://www.browserling.com/tools/binary-to-text)
   - [American Cryptogram Association's list of cipher types](https://www.cryptogram.org/resource-area/cipher-types/)
   - [American Cryptogram Association's list of cipher types](https://www.cryptogram.org/resource-area/cipher-types/)
-  - [RSA (cryptosystem) (Wikipedia)](https://en.wikipedia.org/wiki/RSA_(cryptosystem))
+  - [RSA (cryptosystem-symetric) (Wikipedia)](https://en.wikipedia.org/wiki/RSA_(cryptosystem))
   - [GlobalSign: SSL vs TLS - What's the Difference?](https://www.globalsign.com/en/blog/ssl-vs-tls-difference/)
   - [The GNU Privacy Handbook entry on making and verifying signatures](https://www.gnupg.org/gph/en/manual/x135.html)
   - [Birthday problem (Wikipedia)](https://en.wikipedia.org/wiki/Birthday_problem).
@@ -91,7 +91,7 @@ Plaintext: Information in human-readable form.
 - E-g confirmig the source that sent the data (e-g confirming the person who sent the email)
 
 - **Integrity**
-- This is separate from encryption and authentication. It checks that despit the data being encrypted and the source authenticated, the data has also not been altered during transport
+- This is separate from encryption and authentication. It checks that despite the data being encrypted and the source authenticated, the data has also not been altered during transport
 
 - **Non-Repudication**
 - The owner of the email cannot refuse that it was not him 
@@ -137,18 +137,13 @@ Plaintext: Information in human-readable form.
 
 - **Security Tradeoff** The more complex the computation, the more time consuming- holy grail finding an algorythm with the balacne between quality of encryption and the time taken
 
-## Asymetric or Public-Key Encryption 
 
-- **RSA**
-- **GPG**
 
 ## Checking for Data Integrity- (whether the data is altered or not) with Hashing
 
 - **Message Digest**
 - **MD5**, **SHA256**, **one-way** algorithms
 - Creating hashtags `md5sum`, `sha256sum`
-
-## Digital Signatures
 
 
 ## Applications of Cryptography
@@ -164,26 +159,9 @@ Plaintext: Information in human-readable form.
 
 - **Digital Forensics** The forenic expert immediately performs hashing of the laptop as proof that the data was not changed after the the device was discovered. In addition Steganography can be used to discover hidden data in image files
 
-## Symetric key algorithms (the alternative is Asymetric Key Algorithms)
-
-- Symmetric key algorithms use a single, shared key to encrypt and decrypt a message.
-
-- The shared key is also referred to as a **private key**. 
-
-- **Data encryption standard (DES)**
-
-- FBI initially developed 56k bit key, but it was not very robust
-
-- **Advanced Encryption Standard (AES)**
-
-- Rijndael cipher was the strongest in the FBI contest of encryption and was named AES
-
-- AES offers multiple encryption strengths: 128-bits, 192-bits, and 256-bits. 
-
-- The AES algorithm cannot be used without advanced technologies
 
 
-## Steps of the Encryption process using OpenSSL
+## Symetric Encryption process using OpenSSL
 
 1. Step 1: Generating the private key and IV (adds randomness to encryption algorithm) - This step basically dictats the features to be included in the encryption method
 
@@ -238,6 +216,192 @@ Plaintext: Information in human-readable form.
     - `-in plainmessage.txt.enc` specifies that the input message is now the encrypted 
 
 
+**Disadvantages of the Asymetric encryption**
+
+- Very difficult to transfer the privat key to the receipient. The sender needs to provide the key to the recepient - sending emails or text messages of slaking are not safe
+
+- Too many keys for employees in a large firm. There will have to be a unique key for all possible combinations of the employees working together. 
+
+
+    - (Key 1) Julie, Alice
+    - (Key 2) Julie, Tim
+    - (Key 3) Julie, Bob
+    - (Key 4) Alice, Tim
+    - (Key 5) Alice, Bob
+    - (Key 6) Tim, Bob
+
+ - (N * (N-1)) / 2  = count of symmetric keys
+
+ 
+- An organization of 1,000 employees would require managing almost half a million symmetric keys:
+   
+    - (1000 * 999) / 2 = 499,500‬
+
+
+
+- Symmetric key algorithms use a single, shared private key to encrypt and decrypt a message between the recepient and the sender.
+
+- The shared key is also referred to as a **private key**. 
+
+- **Data encryption standard (DES)**
+
+- FBI initially developed 56k bit key, but it was not very robust
+
+- **Advanced Encryption Standard (AES)**
+
+- Rijndael cipher was the strongest in the FBI contest of encryption and was named AES
+
+- AES offers multiple encryption strengths: 128-bits, 192-bits, and 256-bits. 
+
+- The AES algorithm cannot be used without advanced technologies
+
+## Asymetric Encryption (Public+Private key per employee) - Uses public key of the recepient to encrypt the message and the recepient uses their own private key to decrypt
+
+- Every employee has a unique public key visible to all employees
+
+- Employee A will use the public key of employee B to send an encrypted email
+
+- Employee B will then use his/her unique PRIVATE key that only she knows to match with her own public key which employee A used to send an e-mail. e-g  **[Tim's plain text secret message]** encrypted with **[Julie's public key]** = **[Tim's encrypted message]**
+
+- Only if the private and the public keys match will employee B be able to read the email. E-g Julie receives Tim's encrypted message and decrypts with her matching private key.
+
+
+- For example, in an organization of 12 employees, symmetric encryption would require 66 symmetric keys.
+
+  - (12 * 11) /2 = 66
+
+For asymmetric encryption, each employee would only require their own key pair:
+
+- The calculation is: 
+  -  N * 2
+
+- 12 employees would require 24 keys to be managed.
+  - (12 * 2) = 24
+    
+- Note that for an organization of 12 employees, using asymmetric instead of symmetric would require 42 fewer keys. 
+  - 66 - 24 = 42
+
+- **Algorithms for Asymetric encryption** 
+- `RSA` 1977, last names of its creators: Rivest, Shamir, and Adelman
+
+- **Command for symetric encryption**
+- `GPG` GNU Privacy Guard - free, Can support 3DES, AES, and RSA
+
+> Steps of asymetric exchange
+
+- **Recepient Julie**
+
+1. Create the Public and Private key using `gpg`
+
+- `gpg --gen-key` This will prompt info regarding e-mail, name and a paraphrase/password to open the file and is associated with the user account - it will generate public as well as private key for that particualar username
+
+-  We can also use `gpg --list-keys` to list all keys with a specific user account
+
+2. Export public key only by the recepient (Julie in this example)
+- `gpg --armor --output julie.gpg --export julie@email.com`
+    
+    - `gpg`: The command to run GPG.
+    - `--armor`: Puts the key in an ASCII format.
+    - `--output julie.gpg`: Creates the public key in an accessible format. In this case, we named the key `julie.gpg`. 
+    - `--export julie@email.com`: References which key to use from the key ring. It is referenced by the email.
+    -  We can look at the key by typing `cat julie.gpg`
+    - This key can be posted on the website or publically shared with the sender of the email
+
+- **Sender Tim**
+
+1. The sender (Tim) receives the public key from Julie and is now ready to `import` the key that Julie sent
+
+ - `gpg --import julie.gpg` and  `gpg --list-keys` to check that the key has been successfully exported
+
+2. Creating an ecnryption message file
+
+- `echo "Hi Julie, my bank account number is 2783492" > Tims_plainmessage.txt`
+
+3. Encrypting the message file using recepient (Julie's) exported public key. This will create a cyphertext of Tim's message
+
+  - `gpg --armor --output Tims_encryptedmessage.txt --encrypt --recipient julie@email.com Tims_plainmessage.txt`
+
+  - `cat Tims_encryptedmessage.txt`
+        
+      - `gpg`: The command to run GPG.
+      - `--armor`: Puts the encrypted message in an ASCII format.
+      - `--output Tims_encryptedmessage.txt`: Command for the output file, which creates the name of the encrypted file.
+      - `--encrypt`: Tells GPG to encrypt.
+      - `--recipient julie@email.com`: Tells GPG which public key to use, based on the email address of the key.
+      - `Tims_plainmessage.txt`: Specifies for GPG which plaintext file to encrypt.
+
+- **Recepient Julie- to Decrypt Tim's Message**
+
+1. Decrypt Tim's message 
+
+    - `gpg --output Tims_decrypted_message --decrypt Tims_encryptedmessage.txt` and `cat Tims_decrypted_message`
+          
+
+      - `gpg`: The command to run gpg.
+      - `--output Tims_decrypted_message`: This creates an output file, which is the decrypted message.
+      - `--decrypt Tims_encryptedmessage.txt`: This is indicating to decrypt and what file to decrypt.
+
+
+## Digital Signature - uses private key of the sender to send the email
+
+- So far we have satisfied the privacy and confidentiality bit. Now I want to make sure about the accuracy- confirm that the message came from Tim to Julie and no one else
+
+1. Tim will create his own private and public keys as above like Julie
+
+- `gpg --gen-key`
+- `gpg --armor --output tim.gpg --export tim@email.com`
+
+
+2. Creating a message file
+
+3. Tim will use his private key to sign the message and he will also use Julie's public key to  encrypt the message
+
+ - `gpg --output Tims_signature --armor --detach-sig Tims_message.txt`
+
+            - `gpg` runs the GPG command.
+            - `--output Tims_signature` specifies the output file that contains the digital signature.
+            - `--armor` outputs the signature in an ASCII format.
+            - `--detach-sig Tims_message.txt` specifies that a detached signature will be created against the file `Tims_message.txt`.
+
+4. Julie after receiving the message will now use Tim's public key to validate the signature- Checking autenticity as well as non-repudiation. She will receive `Tims_signature` and `Tims_message.txt` and place them in one directory
+
+5. Now Julie decrypts Tim's message and then verifies the signature
+
+  - `gpg --import tim.gpg`
+  - `gpg --verify Tims_signature Tims_message.txt` Uses Tim's public key to verify Tim's private key based signature
+
+- If the mesage was changed on the way - `gpg` can also perform data integrity
+-  `gpg --verify Tims_signature Tims_message.txt`
+
+## Data Integrity using hashes
+
+- Two command line tools to create hashes: `md5sum` and `sha256sum`.
+
+- `md5sum secretmessage.txt > hashes.txt`  Alternative to MD5 is SHA-256 same steps just need to sustitute `md5sum` with `sha256sum`
+    
+    - `md5sum`: The terminal command to run the MD5 algorithm.
+    - `secretmessage.txt`: The file to be hashed.
+    - `> hashes.txt`: The output file where the message digest is placed.
+    - This last command is optional. If removed, the message digest will display back on the command line.
+
+- Important: Note that after creating the initial hash, if I now go back and modify the text in the file and try to detect if the file has been changed then I will have to type the following command: 
+
+    - `md5sum -c hashes.txt > md5check.txt`
+    
+      - `md5sum`: The terminal command to run the MD5 algorithm.
+      - `-c`: The option to have `md5sum` check the hashes.
+      - `hashes.txt`: The file the check is being run against.
+      - `> md5check.txt`: The output file where the results of the check are placed.
+
+      - Preview the output file to confirm which file failed the check:
+
+      - `cat md5check.txt`
+        
+  - The results should clearly show the file that was modified:
+
+      -  `secretmessage.txt: FAILED`
+
+       
 
 ## Steganography /Steghide
 
@@ -371,7 +535,6 @@ Hiding data inside the image files. You typically need a cover file and file or 
 
 7. **Known plaintext** - The hacker has hash and the plaintext 
 
-## Hard disk data encryption
 
 ## Email and Web Security
 **S/MIME** and **PGP**
@@ -379,5 +542,3 @@ Hiding data inside the image files. You typically need a cover file and file or 
 - 
 
 
-
-## Mitigation Strategies after cryptogenic attacks
