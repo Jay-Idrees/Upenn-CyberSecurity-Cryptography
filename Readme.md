@@ -305,11 +305,35 @@ Hiding data inside the image files. You typically need a cover file and file or 
  - `dictionary wordlists` These are commonly used passwords
  - `broot force attacks` like `John the Rippper`
 
- - Steps:
- 
+ - Hackers can use this to determine the password of the root user after they obtained access into the network
+
+ Steps:
+
+1. ` echo ea847988ba59727dbf4e34ee75726dc3 > hash.txt` Copy the hash into a file
+
+2.  `hashcat -m 0 -a 0 -o solved.txt hash.txt rockyou.txt --force`
+
+- `hashcat`: The command to execute Hashcat.
+
+- `-m 0`: The `0` indicates the script will use the MD5 hash, as this was the hash the security professional determined to be in use.
+
+- If a different hashing algorithm is in use, we would change the value of `0`.
+
+ - For example: We would use `-m 100` for SHA-1, and `-m 1400` for SHA-256.
+        
+    
+ - `-a 0`: The `0` tells the script to apply the attack method of "dictionary."
+        - The above link provides additional attack types.
+
+- `-o solved.txt`: Creates an output file called `solved.txt`.
+
+- `hash.txt`: The input file of the hash.
+
+ - `rockyou.txt`: The file containing the wordlist we will check against.
+
+ - `--force`: Overrides any small errors that may occur.
 
 
-- Hackers can use this to determine the password of the root user after they obtained access into the network
 
 
 
