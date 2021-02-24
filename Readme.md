@@ -539,6 +539,6 @@ Hiding data inside the image files. You typically need a cover file and file or 
 ## Email and Web Security
 **S/MIME** and **PGP**
 - Uses public key and the signature 
-- 
+
 
 
